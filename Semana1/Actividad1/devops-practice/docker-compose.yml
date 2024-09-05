@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    build: 2024-2/Semana1/Actividad1-Introduccion/devops-practice
+    build:Semana1/Actividad1/devops-practice
     ports:
       - "3000:3000"
     environment:
