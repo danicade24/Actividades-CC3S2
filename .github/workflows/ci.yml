@@ -23,6 +23,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: Actividad1/devops-practice
+
+      - name: Build Docker image
+        run: docker build -t Actividad1/devops-practice/.
 
       - name: Run tests
         run: npm test
+        working-directory: Actividad1/devops-practice
+
+      - name: Run Docker container
+        run: docker run -d -p 3000:3000 devops-practice
