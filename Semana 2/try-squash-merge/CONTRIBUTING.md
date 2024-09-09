@@ -1,1 +1,0 @@
-# CÓMO CONTRIBUIR
