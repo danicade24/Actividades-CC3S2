@@ -1,1 +1,2 @@
-Cambio en la misma línea
+Cambio en la misma o diferente línea
+
