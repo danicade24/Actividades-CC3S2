@@ -13,3 +13,4 @@ def run_quiz():
 				print("¡Correcto!")
 			else:
 				break
+		print(f'Juego terminado. Respuestas correctas: {quiz.correct_answers}, incorrectas: {quiz.incorrect_answers}')
