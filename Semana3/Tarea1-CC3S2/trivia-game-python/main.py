@@ -14,4 +14,10 @@ def run_quiz():
 			if quiz.answer_question(question, answer):
 				print("¡Correcto!")
 			else:
-				break
+				print('¡Incorrecto!')	#el juego debe de continuar aunque se equivoque
+
+	#Al finalizar el juego
+	print("Juego terminado")
+	print(f'Preguntas contestadas: {quiz.questions_answered}')
+	print(f'Respuestas correctas: {quiz.correct_answers}')
+	print(f'Respuestas incorrectas: {quiz.incorrect_answers}')
