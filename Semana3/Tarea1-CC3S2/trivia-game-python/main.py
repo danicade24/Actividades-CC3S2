@@ -1,8 +1,10 @@
 from trivia import Question, Quiz
 
 def run_quiz():
+	print("Bienvenido al juego de Trivia!!")
+	print("Responde las siguientes preguntas seleccionando el número de la opción correcta ")
 	quiz = Quiz()
-	while quiz.current_question_index < 10:
+	while quiz.questions_answered < 10:
 		question = quiz.get_next_question()	#retorna la pregunta y si no hay retorna None
 		if question:	#Comprueba si quedan preguntas
 			print(question.description)
@@ -13,4 +15,3 @@ def run_quiz():
 				print("¡Correcto!")
 			else:
 				break
-		print(f'Juego terminado. Respuestas correctas: {quiz.correct_answers}, incorrectas: {quiz.incorrect_answers}')
