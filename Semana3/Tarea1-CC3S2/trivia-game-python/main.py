@@ -47,6 +47,7 @@ def run_quiz():
     while quiz.questions_answered < 10:
         question = quiz.get_next_question()  # Retorna la pregunta y si no hay, retorna None
         if question:  # Comprueba si quedan preguntas
+            print(f"Nivel actual: {quiz.level_question.capitalize()}")
             print(f"{i}) {question.description}")
             for idx, option in enumerate(question.options):  # Muestra las opciones
                 print(f'{letters[idx]}: {option}')
@@ -54,7 +55,6 @@ def run_quiz():
 		# verificamos que la respuesta sea válida
             while True:
                 answer = input("Tu respuesta (a, b, c, d): ").lower()  # convierte la letra en minúscula
-                
                 if answer in letters:
                     selected_option = question.options[letters.index(answer)]
                     if quiz.answer_question(question, selected_option):
@@ -62,10 +62,10 @@ def run_quiz():
                     else:
                         print("¡Incorrecto!")
                     break  #sale del bucle si la respuesta es válida
-                
                 else:
                     print("Opción no válida. Por favor, selecciona a, b, c o d.")
         i += 1
+        print("")
                 
     print("")
     #Al finalizar el juego
