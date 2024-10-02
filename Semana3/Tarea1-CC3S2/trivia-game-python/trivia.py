@@ -49,22 +49,14 @@ class Quiz:
         result = question.is_correct(answer)
         if result:
             self.correct_answers += 1
+            self.increase_difficulty()
         else:
             self.incorrect_answers += 1
-        
-        #Actualizamos el nivel de dificultad luego de contestar una pregunta 
-        self.update_difficulty()
-        return result
-    
-    
-    #Introduce niveles de dificultad
-    def update_difficulty(self):
-        if self.correct_answers > self.incorrect_answers:
-            self.increase_difficulty()
-        elif self.correct_answers < self.incorrect_answers:
             self.decrease_difficulty()
-        else:
-            pass    #en caso de empate se mantiene el nivel
+        return result
+
+
+    #Introduce niveles de dificultad
 
     def increase_difficulty(self):
         if self.level_question == 'easy':

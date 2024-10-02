@@ -1,7 +1,7 @@
 from trivia import Question, Quiz
 
 def run_quiz():
-    print("------¡Bienvenido al juego de Trivia!-----")
+    print("-------------------------¡Bienvenido al juego de Trivia!------------------------")
     print("Responde las siguientes preguntas seleccionando el número de la opción correcta.")
     
     quiz = Quiz()
