@@ -1,0 +1,10 @@
+gato
+manzana
+adivinanza
+juego
+perro
+teclado
+pruebas
+bienvenida
+zapato
+programa
