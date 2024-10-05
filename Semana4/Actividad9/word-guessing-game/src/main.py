@@ -15,12 +15,26 @@ def game():
     print(" ".join(secret_word)) 
     print()
     
-    # Adivina una letra de la palabra
-    letter = input("Adivina una letra: ")
-    guess_letter(word, letter, secret_word)
-    
-    # Dar pista al jugador
-    give_hint(word, secret_word)
+    var=True
+    while var:
+        chain =  ''.join(secret_word)   #convertimos secret_word a sting
+        if chain == word:
+            var=False
+            break
+        
+        # Adivina una letra de la palabra
+        letter = input("Adivina una letra: ")
+        guess_letter(word, letter, secret_word)
+        
+        chain =  ''.join(secret_word)   #convertimos secret_word a sting
+        if chain == word:
+            var=False
+            break
+        
+        # Dar pista al jugador
+        res = input(f"\n¿Necesita una pista(s/n)?: ")
+        if res.lower() == 's':
+            give_hint(word, secret_word)
     
 if __name__ == "__main__":
     game()

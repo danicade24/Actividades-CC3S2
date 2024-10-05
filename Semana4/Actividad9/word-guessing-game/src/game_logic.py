@@ -42,9 +42,12 @@ def give_hint(word, secret_word):
     for char in word:
         hints.append(char)
     
-    hint = random.choice(hints)
-    #guess_letter(word, hint, secret_word)
-    print(f"\nLa letra '{hint}' está en la palabra.")
+    while True:
+        hint = random.choice(hints)
+        if hint not in secret_word:
+            break
+    
+    print(f"\nPista: La letra '{hint}' está en la palabra.")
     replace(word, secret_word, hint)
     
 def replace(word,secret_word, letter):
