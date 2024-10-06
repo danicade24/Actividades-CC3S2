@@ -74,3 +74,4 @@ def replace(word,secret_word, letter):
     print(f"Palabra: ", end="")
     print(" ".join(secret_word)) 
     print()
+    

@@ -44,5 +44,6 @@ def game():
     
     if chain != word:
         print(f"\nLo siento, has pedido. La palabra era: '{word}'")
+
 if __name__ == "__main__":
     game()

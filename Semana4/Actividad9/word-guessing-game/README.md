@@ -61,3 +61,53 @@ Bienvenido al Juego de Adivinanza de Palabras!
 
 La configuración inicial del juego se ha completado.
 ```
+
+
+```
+
+(venv)python3 src/main.py
+Bienvenido al Juego de Adivinanza de Palabras!
+
+La configuración inicial del juego se ha completado.
+
+La palabra ha sido seleccionada. ¡Comienza a adivinar!
+
+Palabra: _ _ _ _ _ _ _ _
+
+Adivina una letra: a
+¡Correcto! La letra 'a' está en la palabra
+Palabra: _ _ _ _ _ a _ a
+
+
+¿Necesita una pista(s/n)?: s
+
+Pista: La letra 'g' está en la palabra.
+Palabra: _ _ _ g _ a _ a
+
+Adivina una letra: k
+La letra 'k' no está en la palabra
+
+¿Necesita una pista(s/n)?: s
+
+Pista: La letra 'p' está en la palabra.
+Palabra: p _ _ g _ a _ a
+
+Adivina una letra: o
+¡Correcto! La letra 'o' está en la palabra
+Palabra: p _ o g _ a _ a
+
+
+¿Necesita una pista(s/n)?: n
+Adivina una letra: r
+¡Correcto! La letra 'r' está en la palabra
+Palabra: p r o g r a _ a
+
+
+¿Necesita una pista(s/n)?: n
+Adivina una letra: m
+¡Correcto! La letra 'm' está en la palabra
+Palabra: p r o g r a m a
+
+
+¡Felicidades! Has adivinado la palabra: 'programa'
+```
