@@ -8,3 +8,15 @@ pruebas
 bienvenida
 zapato
 programa
+elefante
+sol
+computadora
+cielo
+mariposa
+ventilador
+platano
+estrella
+nieve
+sopa
+televisor
+reloj
