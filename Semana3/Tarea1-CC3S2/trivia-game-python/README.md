@@ -22,5 +22,37 @@ Para acceder a nuestra base de datos ejecutamos
 docker exec -it trivia-game-python-db-1 psql -U user -d trivia_db
 ```
 
+![](images/img1.png)
 
+## Ejecución del juego dentro del contenedor
 
+Para ejecutar nuestro juego dentro del contenedor primero construimos nuestro contenedor con el comando:
+
+```bash
+docker compose build
+
+docker compose up -d
+```
+
+Una vez que verificamos que nuestros contenedores estan ejecutandose correctamente con:
+
+```bash
+docker ps -a
+```
+
+![](images/img4.png)
+
+Ahora para correr nuestra aplicación y jugar por consola ejecutamos:
+
+```bash
+docker compose exec web /bin/bash
+```
+Una vezz dentro del bash de nuestro contenedor ejecutamos: 
+```bash
+python src/console.py
+```
+
+Y ya está listo para empezar a jugar
+
+![](images/img2.png)
+![](images/img3.png)
