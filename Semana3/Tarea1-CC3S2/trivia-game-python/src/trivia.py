@@ -1,10 +1,9 @@
-class Question:  
+class Question:
     def __init__(self, description, options, correct_answer):
         self.description = description
         self.options = options
         self.correct_answer = correct_answer
-    
-    #Compara si la respuesta dada coincide con la verdadera
+
     def is_correct(self, answer):
         return self.correct_answer == answer
 
@@ -13,38 +12,34 @@ class Quiz:
     def __init__(self):
         self.questions = {
             'easy': [],
-            'medium' : [],
-            'hard' : []
+            'medium': [],
+            'hard': []
         }
         self.current_question_index = 0
         self.correct_answers = 0
         self.incorrect_answers = 0
-        self.level_question = 'easy'    #por defecto
+        self.level_question = 'easy'
         self.questions_answered = 0
-    
-    #Agrega una pregunta a la lista dependiendo del nivel
+
     def add_question(self, question, level):
         if level in self.questions:
             self.questions[level].append(question)
 
-    #Método para obtener la siguiente pregunta de la lista de preguntas segun el nivel
     def get_next_question(self):
         if self.questions_answered < 10:
             if self.level_question in self.questions and self.questions[self.level_question]:
                 question = self.questions[self.level_question].pop(0)
                 self.questions_answered += 1
                 return question
-            else:   #si ya no hay mas preguntas en el nivel actual
-                if self.decrease_difficulty():  #busca en niveles inferiores
+            else:
+                if self.decrease_difficulty():
                     return self.get_next_question()
-                elif self.increase_difficulty():    #busca en niveles superiores
+                elif self.increase_difficulty():
                     return self.get_next_question()
                 else:
-                    return None     #no encuentra preguntas en ningun nivel
+                    return None
         return None
-    
-    #Verifica la veracidad de la pregunta 
-    #en caso sea correcta aumenta el contador de respuestas correctas y retorna true
+
     def answer_question(self, question, answer):
         result = question.is_correct(answer)
         if result:
@@ -55,9 +50,6 @@ class Quiz:
             self.decrease_difficulty()
         return result
 
-
-    #Introduce niveles de dificultad
-
     def increase_difficulty(self):
         if self.level_question == 'easy':
             self.level_question = 'medium'
@@ -66,7 +58,7 @@ class Quiz:
             self.level_question = 'hard'
             return True
         return False
-    
+
     def decrease_difficulty(self):
         if self.level_question == 'hard':
             self.level_question = 'medium'

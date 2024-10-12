@@ -1,18 +1,20 @@
 FROM python:3.9-slim
 
-# Establecemos el directorio de trabajo dentro del contenedor como /app.
 WORKDIR /app
 
-# Copiamos el archivo requirements.txt al directorio de trabajo
-COPY requirements.txt .
+# Instala netcat-openbsd y actualiza los paquetes
+RUN apt-get update && apt-get install -y netcat-openbsd
 
-# Ejecutamos pip para instalar las dependencias listadas en requirements.txt.
-# La opción --no-cache-dir evita que pip guarde archivos innecesarios
+COPY requirements.txt ./
+
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiamos todo el contenido del directorio actual en el directorio /app del contenedor
 COPY . .
 
-EXPOSE 8000
+# Cambia el WORKDIR solo para `init_db`
+RUN export PYTHONPATH=/app/src
 
-CMD ["uvicorn","main:app","--host","0.0.0.0","--port","8000"]
+CMD ["uvicorn","src.main:app","--host","0.0.0.0","--port","8000"]
+
+# Ajustar la linea de main:app por ejemplo si main esta en una
+# carpeta src deberia decir src.main:app
