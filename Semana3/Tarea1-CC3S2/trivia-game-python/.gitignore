@@ -1,0 +1,15 @@
+# Carpetas y archivos de entorno virtual
+venv/
+.env
+*.pyc
+__pycache__/
+
+# Archivos temporales de VSCode
+.vscode/
+
+# Archivos de configuración de SonarCloud
+.scannerwork/
+
+# Archivos de configuración y salida de pytest
+.pytest_cache/
+
