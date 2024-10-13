@@ -32,8 +32,7 @@ jobs:
         with:
           projectKey: danicade24_Actividades-CC3S2
           organization: danicade24
-          token: f719311a1f7c04a1068bf2125e87196694c3a196
-
+          token: ${{ secrets.SONAR_TOKEN }}
 
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=$GITHUB_WORKSPACE/Semana3/Tarea1-CC3S2/trivia-game-python" >> $GITHUB_ENV
