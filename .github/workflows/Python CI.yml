@@ -23,7 +23,9 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '17'
-          
+      - name: Set JAVA_HOME for Java 17
+        run: echo "JAVA_HOME_17_X64=$(java -XshowSettings:properties -version 2>&1 | grep 'java.home' | awk '{print $3}')" >> $GITHUB_ENV
+      
       - name: Install dependencies
         run: pip install -r requirements.txt
         working-directory: Semana3/Tarea1-CC3S2/trivia-game-python
@@ -34,10 +36,12 @@ jobs:
           unzip sonar-scanner-cli-4.6.2.2472-linux.zip
           mv sonar-scanner-4.6.2.2472-linux sonar-scanner
           echo "PATH=$PATH:${{ github.workspace }}/sonar-scanner/bin" >> $GITHUB_ENV
+          echo "JAVA_HOME=${{ github.workspace }}/sonar-scanner/bin" >> $GITHUB_ENV
       
       - name: SonarCloud Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          JAVA_HOME: ${{ env.JAVA_HOME_17_X64 }}
         run: |
           sonar-scanner \
             -Dsonar.projectKey=danicade24_Actividades-CC3S2 \
