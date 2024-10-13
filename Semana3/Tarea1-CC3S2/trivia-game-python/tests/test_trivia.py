@@ -1,5 +1,5 @@
 import pytest
-from trivia import Question,  Quiz
+from src.trivia import Question,  Quiz
 
 #Comprueba que una respuesta correcta coincida con real
 def test_question_correct_answer():
