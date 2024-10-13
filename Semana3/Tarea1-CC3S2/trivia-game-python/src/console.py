@@ -1,7 +1,7 @@
-from src.trivia import Quiz, Question
-from src.db.database import get_db
+from trivia import Quiz, Question
+from db.database import get_db
 from sqlalchemy.orm import Session
-from src.questions.question_model import Question as DBQuestion
+from questions.question_model import Question as DBQuestion
 
 def load_questions_from_db(db: Session, quiz: Quiz):
     questions = db.query(DBQuestion).all()
@@ -23,9 +23,9 @@ def run_quiz():
         question = quiz.get_next_question()
         if question:
             print(f"Nivel actual: {quiz.level_question.capitalize()}")
-            print(f"Pregunta {i}) {question.description}")
+            print(f"Pregunta {i}: {question.description}")
             for idx, option in enumerate(question.options):
-                print(f'{letters[idx]}: {option}')
+                print(f'{letters[idx]}) {option}')
 
             while True:
                 answer = input("Tu respuesta (a, b, c, d): ").lower()

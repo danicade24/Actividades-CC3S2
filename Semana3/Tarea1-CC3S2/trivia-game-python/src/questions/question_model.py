@@ -1,5 +1,5 @@
 #from ..db.database import Base
-from src.db.database import Base
+from db.database import Base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.dialects.postgresql import ARRAY
 
