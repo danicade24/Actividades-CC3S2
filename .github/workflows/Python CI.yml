@@ -23,5 +23,5 @@ jobs:
         working-directory: Semana3/Tarea1-CC3S2/trivia-game-python
 
       - name: Run tests
-        run: pytest
+        run: PYTHONPATH=Semana3/Tarea1-CC3S2/trivia-game-python pytest
         working-directory: Semana3/Tarea1-CC3S2/trivia-game-python
