@@ -21,24 +21,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
         working-directory: Semana3/Tarea1-CC3S2/trivia-game-python
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        with:
-          args: >
-            -Dsonar.projectKey=danicade24_Actividades-CC3S2
-            -Dsonar.organization=danicade24
-            -Dsonar.sources=Semana3/Tarea1-CC3S2/trivia-game-python
-            -Dsonar.c.file.suffixes=-
-            -Dsonar.cpp.file.suffixes=-
-            -Dsonar.objc.file.suffixes=-
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-
-      - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$GITHUB_WORKSPACE/Semana3/Tarea1-CC3S2/trivia-game-python" >> $GITHUB_ENV
-
+        
       - name: Run tests
         run: pytest
         working-directory: Semana3/Tarea1-CC3S2/trivia-game-python
