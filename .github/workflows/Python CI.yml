@@ -23,17 +23,13 @@ jobs:
         working-directory: Semana3/Tarea1-CC3S2/trivia-game-python
 
       - name: SonarCloud Scan
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          pip install sonar-scanner-cli
-          sonar-scanner \
-            -Dsonar.projectKey=your_project_key \
-            -Dsonar.organization=your_organization \
-            -Dsonar.sources=Semana3/Tarea1-CC3S2/trivia-game-python \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=$SONAR_TOKEN
-        
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectKey: danicade24_Actividades-CC3S2
+          organization: danicade24
+          token: ${{ secrets.SONAR_TOKEN }}
+
+
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=$GITHUB_WORKSPACE/Semana3/Tarea1-CC3S2/trivia-game-python" >> $GITHUB_ENV
 
