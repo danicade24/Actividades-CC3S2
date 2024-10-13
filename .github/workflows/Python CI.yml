@@ -22,12 +22,17 @@ jobs:
         run: pip install -r requirements.txt
         working-directory: Semana3/Tarea1-CC3S2/trivia-game-python
 
+      - name: Check Sonar Token
+        run: echo "Sonar Token: $SONAR_TOKEN"
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
           projectKey: danicade24_Actividades-CC3S2
           organization: danicade24
-          token: ${{ secrets.SONAR_TOKEN }}
+          token: f719311a1f7c04a1068bf2125e87196694c3a196
 
 
       - name: Set PYTHONPATH
