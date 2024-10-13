@@ -1,0 +1,7 @@
+# Ignora archivos de virtual environments
+venv/
+__pycache__/
+
+# Ignora archivos de compilación
+*.pyc
+*.pyo
