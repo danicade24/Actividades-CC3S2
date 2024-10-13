@@ -1,113 +1,58 @@
-## Juego de Adivinanza
+## Tarea 1: Juego de trivia
 
-## Descripción
-Este juego consiste en adivinar una palabra secreta letra por letra. A medida que el jugador va adivinando, el juego muestra el progreso, revelando las letras correctas adivinadas y manteniendo ocultas las que faltan por descubrir.
+### Descripción del juego
 
-## Funcionalidades futuras
+Es un juego de preguntas y respuestas donde los jugadores deben de responder preguntas con opción múltiples, es decir, cada pregunta tendrá una sola respuesta correcta.
 
-- **Selección aleatoria de palabras:** Las palabras a adivinar se seleccionarán aleatoriamente de una lista.
-- **Sistema de pistas limitado:** El jugador podrá pedir pistas, pero estas estarán limitadas.
-- **Control de intentos fallidos:** Se tendrá un número limitado de intentos fallidos antes de que el jugador pierda la partida.
-- **Niveles de dificultad:** Permitirá que el jugador seleccione un nivel de dificultad para el juego.
-- **Tabla de puntuaciones:** Un sistema para registrar y mostrar las puntuaciones de los jugadores.
+### Reglas del juego
 
-## Instrucciones para ejecutar el juego
+- El juego constará de 10 rondas con preguntas únicas
+- Cada pregunta cuenta con 4 opciones de posibles respuestas numeradas. Solo una opción es la correcta.
+- El jugador elige su respuesta ingresando el número correspondiente a la opción elegida.
+- Cada respuesta correcta otorga un punto al jugador y las respuestas incorrectas no se penalizan.
+- Al finalizar el juego, se mostrará la puntuación total del jugador junto con el número de respuestas correctas e incorrectas.
 
-1. Debe de clonar el repositorio donde se enuentra el juego
-    ```bash
-    git clone https://github.com/danicade24/Actividades-CC3S2.git
-    ```
-2. Diríjase al directorio donde se encuentra el juego
-
-    ```bash
-    cd Actividades-CC3S2/Semana4/Actividad9/word-guesing-game
-    ```
-
-3. Ejecute el comando
-    ```bash
-    python3 src/main.py
-    ```
-4. Para ejecutar la prueba automatizada de BDD que valida la funcionalidad del mensaje de bienvenida, utiliza el siguiente comando:
-    ```bash
-    behave
-    ```
-    Antes de ejecutar verifique si tiene `behave`instalado, si no lo tiene puede instalarlo con:
-
-    ```bash
-    pip install behave
-    ```
-
-
-    Después de ejecutarlo debería obtener una salida como esta:
-
-    ```gherkin
-    Característica: Inicio del juego de adivinanza # features/iniciar_juego.feature:3
-
-    Escenario: Ver mensaje de bienvenida al iniciar el juego                                # features/iniciar_juego.feature:5
-        Dado que el juego esta configurado                                                    # features/steps/game_steps.py:8 0.000s
-        Cuando ejecuto el archivo principal                                                   # features/steps/game_steps.py:13 0.026s
-        Entonces el juego muestra el mensaje "Bienvenido al Juego de Adivinanza de Palabras!" # features/steps/game_steps.py:21 0.000s
-        Y el juego muestra el mensaje "La configuración inicial del juego se ha completado."  # features/steps/game_steps.py:21 0.000s
-
-    1 feature passed, 0 failed, 0 skipped
-    1 scenario passed, 0 failed, 0 skipped
-    4 steps passed, 0 failed, 0 skipped, 0 undefined
-    Took 0m0.026s
-    ```
-
-### Nota: En este momento el juego se encuentra en la fase inicial de desarrollo, si se ejecuta lanzará como salida:
+Primero construimos el contenedor de docker-compose con el comando:
 ```bash
-Bienvenido al Juego de Adivinanza de Palabras!
-
-La configuración inicial del juego se ha completado.
+docker compose up --build
 ```
 
-
+Para acceder a nuestra base de datos ejecutamos
+```bash
+docker exec -it trivia-game-python-db-1 psql -U user -d trivia_db
 ```
 
-(venv)python3 src/main.py
-Bienvenido al Juego de Adivinanza de Palabras!
+![](images/img1.png)
 
-La configuración inicial del juego se ha completado.
+## Ejecución del juego dentro del contenedor
 
-La palabra ha sido seleccionada. ¡Comienza a adivinar!
+Para ejecutar nuestro juego dentro del contenedor primero construimos nuestro contenedor con el comando:
 
-Palabra: _ _ _ _ _ _ _ _
+```bash
+docker compose build
 
-Adivina una letra: a
-¡Correcto! La letra 'a' está en la palabra
-Palabra: _ _ _ _ _ a _ a
-
-
-¿Necesita una pista(s/n)?: s
-
-Pista: La letra 'g' está en la palabra.
-Palabra: _ _ _ g _ a _ a
-
-Adivina una letra: k
-La letra 'k' no está en la palabra
-
-¿Necesita una pista(s/n)?: s
-
-Pista: La letra 'p' está en la palabra.
-Palabra: p _ _ g _ a _ a
-
-Adivina una letra: o
-¡Correcto! La letra 'o' está en la palabra
-Palabra: p _ o g _ a _ a
-
-
-¿Necesita una pista(s/n)?: n
-Adivina una letra: r
-¡Correcto! La letra 'r' está en la palabra
-Palabra: p r o g r a _ a
-
-
-¿Necesita una pista(s/n)?: n
-Adivina una letra: m
-¡Correcto! La letra 'm' está en la palabra
-Palabra: p r o g r a m a
-
-
-¡Felicidades! Has adivinado la palabra: 'programa'
+docker compose up -d
 ```
+
+Una vez que verificamos que nuestros contenedores estan ejecutandose correctamente con:
+
+```bash
+docker ps -a
+```
+
+![](images/img4.png)
+
+Ahora para correr nuestra aplicación y jugar por consola ejecutamos:
+
+```bash
+docker compose exec web /bin/bash
+```
+Una vezz dentro del bash de nuestro contenedor ejecutamos: 
+```bash
+python src/console.py
+```
+
+Y ya está listo para empezar a jugar
+
+![](images/img2.png)
+![](images/img3.png)
