@@ -1,0 +1,21 @@
+# dependencias que pueden causar problemas
+Werkzeug==2.1.2
+SQLAlchemy==1.4.46
+
+# Dependencias para todo las actividades
+Flask==2.1.2
+Flask-SQLAlchemy==2.5.1
+requests==2.31.0
+
+# Probando las dependencias
+factory-boy==3.2.1     # Versión actualizada
+pylint==2.14.0
+
+coverage==7.6.4
+exceptiongroup==1.2.2
+iniconfig==2.0.0
+packaging==24.1
+pluggy==1.5.0
+pytest==8.3.3
+pytest-cov==6.0.0
+tomli==2.0.2

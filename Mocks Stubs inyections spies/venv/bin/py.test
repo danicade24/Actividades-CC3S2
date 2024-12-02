@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' "/home/daniela/Escritorio/CC3S2/Actividades-CC3S2/Mocks Stubs inyections spies/venv/bin/python3" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from pytest import console_main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(console_main())
